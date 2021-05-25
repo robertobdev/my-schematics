@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { ApolloQueryResult } from '@apollo/client/core';
+import { <%= classify(name) %> } from '../interfaces/<%= dasherize(name) %>.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +38,7 @@ export class <%= classify(name) %>Service {
   }
 
   //TODO: type it
-  save<%= classify(name) %>(<%= dasherize(name) %>: any): Promise<any> {
+  save<%= classify(name) %>(<%= dasherize(name) %>: <%= classify(name) %>): Promise<any> {
     return this._httpClient.post(`${this.BASEURL}/<%= dasherize(name) %>`, <%= dasherize(name) %>).toPromise();
   }
 

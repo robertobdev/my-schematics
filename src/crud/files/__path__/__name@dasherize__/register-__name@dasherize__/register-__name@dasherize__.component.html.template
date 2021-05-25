@@ -1,0 +1,19 @@
+
+<form [formGroup]="form<%= classify(name) %>" class="flex" (ngSubmit)="save<%= classify(name) %>()">
+  <ng-template matStepLabel>Dados pessoais</ng-template>
+  <div class="flex-1 flex flex-col">
+    <mat-form-field class="w-4/12">
+      <input matInput placeholder="Descrição" formControlName="description" required />
+      <mat-error>{{ this.form<%= classify(name) %>.get('description')?.errors?.message }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-4/12">
+      <input matInput placeholder="Rota" formControlName="router" required />
+      <mat-error>{{ this.form<%= classify(name) %>.get('description')?.errors?.message }}</mat-error>
+    </mat-form-field>
+    <div class="flex w-full justify-end">
+      <button mat-raised-button color="primary" [disabled]="!form<%= classify(name) %>.valid">
+        Cadastrar
+      </button>
+    </div>
+  </div>
+</form>

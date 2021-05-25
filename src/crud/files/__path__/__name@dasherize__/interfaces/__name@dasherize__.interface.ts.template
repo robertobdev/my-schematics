@@ -1,7 +1,5 @@
 export interface <%= classify(name) %>{
+  id: number;
   description: string;
-  //TODO: type it
-  roles: any;
-  //TODO: type it
-  module: any;
+  router: string;
 }

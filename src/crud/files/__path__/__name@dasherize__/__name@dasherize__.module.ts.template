@@ -1,0 +1,14 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-routing.module';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+import { List<%= classify(name) %>Component } from './list-<%= dasherize(name) %>/list-<%= dasherize(name) %>.component';
+import { Register<%= classify(name) %>Component } from './register-<%= dasherize(name) %>/register-<%= dasherize(name) %>.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+
+@NgModule({
+  declarations: [<%= classify(name) %>Component, Register<%= classify(name) %>Component, List<%= classify(name) %>Component],
+  imports: [CommonModule, <%= classify(name) %>RoutingModule, SharedModule],
+})
+export class <%= classify(name) %>Module {}

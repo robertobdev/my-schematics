@@ -1,0 +1,45 @@
+import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ValidateRequired } from 'anutils/validators';
+import { <%= classify(name) %>Service } from '../services/<%= dasherize(name) %>.service';
+
+@Component({
+  selector: 'app-register-<%= dasherize(name) %>',
+  templateUrl: './register-<%= dasherize(name) %>.component.html',
+  styleUrls: ['./register-<%= dasherize(name) %>.component.scss'],
+})
+export class Register<%= classify(name) %>Component {
+  form<%= classify(name) %>: FormGroup;
+  id!: number;
+
+  constructor(
+    private _<%= dasherize(name) %>Service: <%= classify(name) %>Service,
+    private _router: Router,
+    private _activateRouter: ActivatedRoute
+  ) {
+    this.form<%= classify(name) %> = new FormGroup({
+      description: new FormControl(null, [ValidateRequired]),
+      router: new FormControl(null, [ValidateRequired]),
+    });
+    this._activateRouter.paramMap.subscribe((params: ParamMap) => {
+      this.id = parseInt(params.get('id') as string);
+      if (this.id) {
+        void this._<%= dasherize(name) %>Service.get<%= classify(name) %>(this.id).then((<%= dasherize(name) %>) => {
+          if (!<%= dasherize(name) %>) {
+            void this._router.navigateByUrl('/<%= dasherize(name) %>');
+            return;
+          }
+          this.form<%= classify(name) %>.patchValue(<%= dasherize(name) %>);
+        });
+      }
+    });
+  }  
+
+  save<%= classify(name) %>(): void {
+    const form = this.form<%= classify(name) %>.value as any;
+    void this._<%= dasherize(name) %>Service
+      .save<%= classify(name) %>(form)
+      .then(() => this._router.navigateByUrl('/<%= dasherize(name) %>/list'));
+  }
+}

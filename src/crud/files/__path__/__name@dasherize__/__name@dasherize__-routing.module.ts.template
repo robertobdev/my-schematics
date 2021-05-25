@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { List<%= classify(name) %>Component } from './list-<%= dasherize(name) %>/list-<%= dasherize(name) %>.component';
+import { Register<%= classify(name) %>Component } from './register-<%= dasherize(name) %>/register-<%= dasherize(name) %>.component';
+import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: <%= classify(name) %>Component,
+    children: [
+      {
+        path: 'register',
+        component: Register<%= classify(name) %>Component,
+      },
+      {
+        path: 'register/:id',
+        component: Register<%= classify(name) %>Component,
+      },
+      {
+        path: 'list',
+        component: List<%= classify(name) %>Component,
+      },
+    ],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class <%= classify(name) %>RoutingModule {}

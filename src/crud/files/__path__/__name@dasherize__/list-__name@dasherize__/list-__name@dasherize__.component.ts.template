@@ -16,7 +16,7 @@ import {
   startWith,
   switchMap,
 } from 'rxjs/operators';
-import { <%= classify(name) %> } from './interfaces/<%= dasherize(name) %>.interface';
+import { <%= classify(name) %> } from '../interfaces/<%= dasherize(name) %>.interface';
 import { <%= classify(name) %>Service } from '../services/<%= dasherize(name) %>.service';
 
 interface Search {
@@ -28,8 +28,8 @@ interface Search {
   templateUrl: './list-<%= dasherize(name) %>.component.html',
   styleUrls: ['./list-<%= dasherize(name) %>.component.scss'],
 })
-export class List <%= classify(name) %>Component implements AfterViewInit {
-  displayedColumns: string[] = ['module_id', 'role_id', 'actions'];
+export class List<%= classify(name) %>Component implements AfterViewInit {
+  displayedColumns: string[] = ['description', 'router', 'actions'];
   filteredAndPaged<%= classify(name) %>s: <%= classify(name) %>[] = [];
 
   formSearch: FormGroup;

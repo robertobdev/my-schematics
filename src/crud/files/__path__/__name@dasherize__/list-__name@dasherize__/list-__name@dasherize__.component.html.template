@@ -20,7 +20,7 @@
   <div class="table-container">
     <table
       mat-table
-      [dataSource]="filteredAndPagedAcls"
+      [dataSource]="filteredAndPaged<%= classify(name) %>s"
       class="mat-elevation-z8"
       matSort
       matSortActive="id"
@@ -33,18 +33,18 @@
         <td mat-cell *matCellDef="let row">{{ row.id }}</td>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="module_id">
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-          Módulo
+          Descrição
         </th>
-        <td mat-cell *matCellDef="let row">{{ row.module.description }}</td>
+        <td mat-cell *matCellDef="let row">{{ row.description }}</td>
       </ng-container>
 
-      <!-- Cpf Column -->
-      <ng-container matColumnDef="role_id">
-        <th mat-header-cell *matHeaderCellDef>Função</th>
-        <td mat-cell *matCellDef="let row">{{ row.role.description }}</td>
+      <!-- Router Column -->
+      <ng-container matColumnDef="router">
+        <th mat-header-cell *matHeaderCellDef>Rota</th>
+        <td mat-cell *matCellDef="let row">{{ row.router }}</td>
       </ng-container>
 
       <!-- Actions Column -->
@@ -54,7 +54,7 @@
           <button
             mat-raised-button
             color="primary"
-            [routerLink]="'/acl/register/' + row.id"
+            [routerLink]="'/<%= dasherize(name) %>/register/' + row.id"
           >
             Detalhes
           </button>
