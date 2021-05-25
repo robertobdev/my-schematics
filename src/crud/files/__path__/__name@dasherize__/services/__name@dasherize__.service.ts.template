@@ -1,0 +1,49 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { Apollo, gql } from 'apollo-angular';
+import { Observable } from 'rxjs';
+import { ApolloQueryResult } from '@apollo/client/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class <%= classify(name) %>Service {
+  BASEURL = environment.baseUrl;
+
+  constructor(private _httpClient: HttpClient, private apollo: Apollo) {}
+  //TODO: type it
+  get<%= classify(name) %>s({
+    page,
+    field,
+    order,
+    filter,
+  }: any): Observable<ApolloQueryResult<any>> {
+    return this.apollo.watchQuery<any>({
+      query: gql`
+        {
+          <%= dasherize(name) %>s(
+            crudList: { page: ${page},filter: "${filter}",field: "${field}", order: "${order}" }
+          ) {
+            totalCount
+            hasNextPage
+            nodes {
+              id              
+            }
+          }
+        }
+      `,
+    }).valueChanges;
+  }
+
+  //TODO: type it
+  save<%= classify(name) %>(<%= dasherize(name) %>: any): Promise<any> {
+    return this._httpClient.post(`${this.BASEURL}/<%= dasherize(name) %>`, <%= dasherize(name) %>).toPromise();
+  }
+
+  //TODO: type it
+  get<%= classify(name) %>(id: number): Promise<any> {
+    return this._httpClient.get(`${this.BASEURL}/<%= dasherize(name) %>/${id}`).toPromise();
+  }
+ 
+}

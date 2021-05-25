@@ -1,0 +1,39 @@
+{
+  "name": "my-schematics",
+  "version": "0.0.1",
+  "description": "Templetes to create a crud",
+  "scripts": {
+    "prebuild": "npx rimraf dist",
+    "build": "npx tsc -p tsconfig.json",
+    "copy:json": "cpy --cwd=src --parents '**/*.json' ../dist/my-schematics/src",
+    "copy:files": "cpy --cwd=src --parents '*/files/**' ../dist/my-schematics/src",
+    "postbuild": "yarn copy:package && yarn copy:files &&  yarn copy:json",
+    "copy:package": "cp package.json dist/my-schematics/",
+    "test": "yarn build && jasmine src/**/*_spec.js"
+  },
+  "keywords": [
+    "schematics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "schematics": "./src/collection.json",
+  "dependencies": {
+    "@angular-devkit/core": "^12.0.1",
+    "@angular-devkit/schematics": "^12.0.1",
+    "@angular/cdk": "^12.0.1",
+    "@angular/common": "^12.0.1",
+    "@angular/core": "^12.0.1",
+    "@schematics/angular": "^12.0.1",
+    "typescript": "~4.1.2"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~3.5.0",
+    "@types/node": "^12.11.1",
+    "cpy-cli": "^3.1.1",
+    "jasmine": "^3.5.0",
+    "rimraf": "^3.0.2"
+  },
+  "ng-add": {
+    "save": "devDependencies"
+  }
+}

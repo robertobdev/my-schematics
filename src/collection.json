@@ -1,0 +1,14 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Add schematic and configure",
+      "factory": "./ng-add/index#ngAdd"
+    },
+    "crud": {
+      "description": "Generate a crud in the project.",
+      "factory": "./crud/index#crud",
+      "schema": "./crud/schema.json"
+    }
+  }
+}

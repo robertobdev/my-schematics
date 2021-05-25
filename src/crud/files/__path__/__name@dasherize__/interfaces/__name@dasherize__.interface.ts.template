@@ -1,0 +1,7 @@
+export interface <%= classify(name) %>{
+  description: string;
+  //TODO: type it
+  roles: any;
+  //TODO: type it
+  module: any;
+}
