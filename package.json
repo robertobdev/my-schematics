@@ -1,5 +1,5 @@
 {
-  "name": "my-schematics",
+  "name": "my-schematics-crud",
   "version": "0.0.1",
   "description": "Templetes to create a crud",
   "scripts": {
