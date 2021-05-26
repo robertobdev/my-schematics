@@ -1,14 +1,15 @@
 {
   "name": "my-schematics-crud",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Templetes to create a crud",
   "scripts": {
     "prebuild": "npx rimraf dist",
     "build": "npx tsc -p tsconfig.json",
     "copy:json": "cpy --cwd=src --parents '**/*.json' ../dist/my-schematics/src",
     "copy:files": "cpy --cwd=src --parents '*/files/**' ../dist/my-schematics/src",
-    "postbuild": "yarn copy:package && yarn copy:files &&  yarn copy:json",
+    "postbuild": "yarn copy:package && yarn copy:readme && yarn copy:files &&  yarn copy:json",
     "copy:package": "cp package.json dist/my-schematics/",
+    "copy:readme": "cp README.md dist/my-schematics/",
     "test": "yarn build && jasmine src/**/*_spec.js"
   },
   "keywords": [
