@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { ValidateRequired } from 'anutils/validators';
 import { <%= classify(name) %>Service } from '../services/<%= dasherize(name) %>.service';
 
 @Component({
@@ -19,8 +18,8 @@ export class Register<%= classify(name) %>Component {
     private _activateRouter: ActivatedRoute
   ) {
     this.form<%= classify(name) %> = new FormGroup({
-      description: new FormControl(null, [ValidateRequired]),
-      router: new FormControl(null, [ValidateRequired]),
+      description: new FormControl(null, []),
+      router: new FormControl(null, []),
     });
     this._activateRouter.paramMap.subscribe((params: ParamMap) => {
       this.id = parseInt(params.get('id') as string);

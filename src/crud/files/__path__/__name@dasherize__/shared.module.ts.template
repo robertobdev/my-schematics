@@ -1,4 +1,4 @@
-/*******
+/**
 
 
 
@@ -8,12 +8,6 @@ Note this file if you want
 
 
 */
-
-
-
-
-
-
 
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
@@ -25,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
 
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt-BR');
@@ -43,7 +38,8 @@ const materialModules = [
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,    
+    ReactiveFormsModule, 
+    HttpClientModule,   
     ...materialModules,
   ],
   exports: [

@@ -5,7 +5,7 @@ import { <%= classify(name) %>RoutingModule } from './<%= dasherize(name) %>-rou
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 import { List<%= classify(name) %>Component } from './list-<%= dasherize(name) %>/list-<%= dasherize(name) %>.component';
 import { Register<%= classify(name) %>Component } from './register-<%= dasherize(name) %>/register-<%= dasherize(name) %>.component';
-import { SharedModule } from 'shared.module';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [<%= classify(name) %>Component, Register<%= classify(name) %>Component, List<%= classify(name) %>Component],
